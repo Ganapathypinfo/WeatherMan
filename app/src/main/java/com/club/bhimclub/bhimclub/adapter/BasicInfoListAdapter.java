@@ -1,6 +1,8 @@
 package com.club.bhimclub.bhimclub.adapter;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +13,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.RequestOptions;
+import com.bumptech.glide.request.target.Target;
 import com.club.bhimclub.bhimclub.R;
 import com.club.bhimclub.bhimclub.model.BasicInfoList;
 import com.club.bhimclub.bhimclub.model.Contact;
@@ -72,15 +78,30 @@ public class BasicInfoListAdapter extends  RecyclerView.Adapter<BasicInfoListAda
         holder.name.setText(contact.getFirstname());
         holder.phone.setText(contact.getDesignation());
 
-
+        String pictureUri = "http://bhimclub.com/webupload/thumb/1a37d2c9-7d8c-4561-9321-8365ca8f760c_1542137706.jpg";
         Glide.with(context)
 //                .load(contact.getProfile_image())
-                .load("http://bhimclub.com/webupload/thumb/1a37d2c9-7d8c-4561-9321-8365ca8f760c_1542137706.jpg")
+                /*.load(pictureUri)
                 .apply(RequestOptions.placeholderOf(R.drawable.contact_icon_profile)
-                        .error(R.drawable.ic_blocking)
-                        .override(500,500))
+
+                        .override(100,100))
                 .apply(RequestOptions.circleCropTransform())
-                .into(holder.thumbnail);
+                .into(holder.thumbnail);*/
+                .asBitmap().
+                load(pictureUri)
+                .apply(new RequestOptions().override(50, 50))
+                .listener(new RequestListener<Bitmap>() {
+                    @Override
+                    public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Bitmap> target, boolean isFirstResource) {
+                        return false;
+                    }
+                    @Override
+                    public boolean onResourceReady(Bitmap resource, Object model, Target<Bitmap> target, DataSource dataSource, boolean isFirstResource) {
+                        // resource is your loaded Bitmap
+                        holder.thumbnail.setImageBitmap(resource);
+                        return true;
+                    }
+                }).submit();
 
     }
 
