@@ -27,7 +27,7 @@ public class BasicInfoList {
         this.data = data;
     }
 
-    public class BasicInfo {
+    public static class BasicInfo {
         @SerializedName("id")
         private int id;
         @SerializedName("firstname")
@@ -38,6 +38,10 @@ public class BasicInfoList {
         private String designation;
         @SerializedName("profile_image")
         private String profile_image;
+
+        private boolean isMsgRecived;
+
+        private int badgeCount;
 
         public int getId() {
             return id;
@@ -77,6 +81,22 @@ public class BasicInfoList {
 
         public void setProfile_image(String profile_image) {
             this.profile_image = profile_image;
+        }
+
+        public boolean isMsgRecived() {
+            return isMsgRecived;
+        }
+
+        public void setMsgRecived(boolean msgRecived) {
+            isMsgRecived = msgRecived;
+        }
+
+        public int getBadgeCount() {
+            return badgeCount;
+        }
+
+        public void setBadgeCount(int badgeCount) {
+            this.badgeCount = badgeCount;
         }
     }
 }

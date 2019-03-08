@@ -1,6 +1,7 @@
 package com.club.bhimclub.bhimclub.activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Handler;
 import android.support.annotation.AnimatorRes;
@@ -38,6 +39,10 @@ public class SplashActivity extends BaseActivity {
     @BindAnim(R.anim.fromtop)
     Animation fromTop;
 
+    private SharedPreferences loginPreferences;
+    private Boolean saveLogin;
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +51,20 @@ public class SplashActivity extends BaseActivity {
         Timber.d("Bhim Club App Started");
         ivLogo.setAnimation(frombottom);
         tvMytext.setAnimation(fromTop);
+        loginPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
+        saveLogin = loginPreferences.getBoolean("saveLogin", false);
+
+
+        if (saveLogin) {
+            //Do any action here. Now we are moving to next page
+            Intent mySuperIntent = new Intent(SplashActivity.this, LoginActivity.class);
+            startActivity(mySuperIntent);
+
+            /* This 'finish()' is for exiting the app when back button pressed
+             *  from Home page which is ActivityHome
+             */
+            finish();
+        }else{
         //Code to start timer and take action after the timer ends
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -59,6 +78,7 @@ public class SplashActivity extends BaseActivity {
                 finish();
             }
         }, SPLASH_TIME);
+        }
     }
 
     @Override

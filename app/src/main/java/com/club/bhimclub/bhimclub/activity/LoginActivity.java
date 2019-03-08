@@ -3,16 +3,17 @@ package com.club.bhimclub.bhimclub.activity;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.app.Application;
 import android.app.LoaderManager;
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.app.LoaderManager.LoaderCallbacks;
 
 import android.content.CursorLoader;
 import android.content.Loader;
@@ -35,23 +36,26 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Timer;
 
-import com.club.bhimclub.bhimclub.ConnectivityReceiver;
+import com.club.bhimclub.bhimclub.EndPointAPIcall;
 import com.club.bhimclub.bhimclub.MyApplication;
 import com.club.bhimclub.bhimclub.R;
+import com.club.bhimclub.bhimclub.model.LoginInfo;
+import com.club.bhimclub.bhimclub.viewModel.LoginViewModel;
+import com.club.bhimclub.bhimclub.model.Login;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 import timber.log.Timber;
 
 import static android.Manifest.permission.READ_CONTACTS;
@@ -94,19 +98,41 @@ public class LoginActivity extends BaseActivity implements LoaderManager.LoaderC
     private SharedPreferences.Editor loginPrefsEditor;
     private Boolean saveLogin;
 
+    public LoginViewModel mLoginViewModel;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        // Get a new or existing ViewModel from the ViewModelProvider.
+
         unbinder = ButterKnife.bind(this);
         loginPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
         loginPrefsEditor = loginPreferences.edit();
         saveLogin = loginPreferences.getBoolean("saveLogin", false);
+
+
         if (saveLogin == true) {
             mEmailView.setText(loginPreferences.getString("username", ""));
             mPasswordView.setText(loginPreferences.getString("password", ""));
             cbRemember.setChecked(true);
         }
+        /*mLoginViewModel = ViewModelProviders.of(this).get(LoginViewModel.class);
+        mLoginViewModel.getMyLogin().observe(this, new Observer<List<Login>>() {
+            @Override
+            public void onChanged(@Nullable final List<Login> words) {
+                // Update the cached copy of the words in the adapter.
+//                adapter.setWords(words);
+                if(mLoginViewModel.getMyLogin().getValue() != null && mLoginViewModel.getMyLogin().getValue().size() >0){
+
+                    mEmailView.setText(mLoginViewModel.getMyLogin().getValue().get(0).getUserName());
+                    mPasswordView.setText(mLoginViewModel.getMyLogin().getValue().get(0).getPassword());
+                    cbRemember.setChecked(true);
+                }
+            }
+        });
+*/
+
 //        MyApplication.getmInstance().setConnectivityListener(this);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -132,18 +158,7 @@ public class LoginActivity extends BaseActivity implements LoaderManager.LoaderC
                 InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(mEmailView.getWindowToken(), 0);
 
-                String username = mEmailView.getText().toString();
-                String password = mPasswordView.getText().toString();
 
-                if (cbRemember.isChecked()) {
-                    loginPrefsEditor.putBoolean("saveLogin", true);
-                    loginPrefsEditor.putString("username", username);
-                    loginPrefsEditor.putString("password", password);
-                    loginPrefsEditor.commit();
-                } else {
-                    loginPrefsEditor.clear();
-                    loginPrefsEditor.commit();
-                }
                 attemptLogin();
             }
         });
@@ -222,10 +237,6 @@ public class LoginActivity extends BaseActivity implements LoaderManager.LoaderC
      * errors are presented and no actual login attempt is made.
      */
     private void attemptLogin() {
-        if (mAuthTask != null) {
-            return;
-        }
-
         // Reset errors.
         mEmailView.setError(null);
         mPasswordView.setError(null);
@@ -263,9 +274,66 @@ public class LoginActivity extends BaseActivity implements LoaderManager.LoaderC
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             showProgress(true);
-            mAuthTask = new UserLoginTask(email, password);
-            mAuthTask.execute((Void) null);
+            EndPointAPIcall endPointAPIcall = retrofit.create(EndPointAPIcall.class);
+            Observable<LoginInfo> call = endPointAPIcall.getLoginInfo(email, password);
+            call.subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread())
+                    .map(result ->result)
+                    .subscribe(this::handleResults, this::handleError);
+//            mAuthTask = new UserLoginTask(email, password);
+//            mAuthTask.execute((Void) null);
         }
+    }
+
+    private void handleResults(LoginInfo loginInfo) {
+            showProgress(false);
+        if(loginInfo.getSuccess() == 1){
+
+            loginPrefsEditor.putString("UserType", loginInfo.getUserType());
+            loginPrefsEditor.putString("ProfileImage", loginInfo.getProfileImage());
+            loginPrefsEditor.putString("LoginUserName", loginInfo.getName());
+            loginPrefsEditor.putString("EmployeeType", loginInfo.getEmployeeType());
+            loginPrefsEditor.putString("Department", loginInfo.getDepartment());
+            loginPrefsEditor.putString("Designation", loginInfo.getDesignation());
+            loginPrefsEditor.putString("PhoneNumber", loginInfo.getPhoneno());
+            loginPrefsEditor.putString("Address", loginInfo.getAddress());
+            loginPrefsEditor.putString("City", loginInfo.getCity());
+            loginPrefsEditor.putString("State", loginInfo.getState());
+            loginPrefsEditor.putInt("Userid", loginInfo.getUserid());
+            loginPrefsEditor.apply();
+
+            String username = mEmailView.getText().toString();
+            String password = mPasswordView.getText().toString();
+
+            if (cbRemember.isChecked()) {
+                loginPrefsEditor.putBoolean("saveLogin", true);
+                loginPrefsEditor.putString("username", username);
+                loginPrefsEditor.putString("password", password);
+                loginPrefsEditor.commit();
+                    /*Login login = new Login();
+                    login.setUserName(username);
+                    login.setPassword(password);
+                    mLoginViewModel.insert(login);*/
+            } else {
+                loginPrefsEditor.putBoolean("saveLogin", false);
+                loginPrefsEditor.commit();
+                loginPrefsEditor.clear();
+                loginPrefsEditor.commit();
+            }
+
+            finish();
+            Intent mySuperIntent = new Intent(LoginActivity.this, HomeActivity.class);
+            startActivity(mySuperIntent);
+        }else if(loginInfo.getSuccess() == 0){
+            mPasswordView.setError(loginInfo.getMessage());
+            mPasswordView.requestFocus();
+        }
+    }
+
+
+    private void handleError(Throwable t) {
+        showProgress(false);
+        Toast.makeText(LoginActivity.this, "ERROR IN FETCHING API RESPONSE. Try again",
+                Toast.LENGTH_LONG).show();
     }
 
     private boolean isEmailValid(String email) {
@@ -388,6 +456,7 @@ public class LoginActivity extends BaseActivity implements LoaderManager.LoaderC
             try {
                 // Simulate network access.
                 Thread.sleep(2000);
+
             } catch (InterruptedException e) {
                 return false;
             }
@@ -404,15 +473,14 @@ public class LoginActivity extends BaseActivity implements LoaderManager.LoaderC
             return true;
         }
 
+
         @Override
         protected void onPostExecute(final Boolean success) {
             mAuthTask = null;
             showProgress(false);
 
             if (success) {
-                finish();
-                Intent mySuperIntent = new Intent(LoginActivity.this, HomeActivity.class);
-                startActivity(mySuperIntent);
+
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));
                 mPasswordView.requestFocus();

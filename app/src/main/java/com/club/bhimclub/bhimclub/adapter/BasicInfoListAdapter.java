@@ -35,7 +35,7 @@ public class BasicInfoListAdapter extends  RecyclerView.Adapter<BasicInfoListAda
     private BasicInfoListAdapter.BasicInfoListAdapterListener listener;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView name, phone;
+        public TextView name, phone, badge;
         public ImageView thumbnail;
 
         public MyViewHolder(View view) {
@@ -43,6 +43,7 @@ public class BasicInfoListAdapter extends  RecyclerView.Adapter<BasicInfoListAda
             name = view.findViewById(R.id.tv_full_name);
             phone = view.findViewById(R.id.tv_designation);
             thumbnail = view.findViewById(R.id.profile_image);
+            badge = view.findViewById(R.id.badge_notification);
 
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -77,6 +78,14 @@ public class BasicInfoListAdapter extends  RecyclerView.Adapter<BasicInfoListAda
         final BasicInfoList.BasicInfo contact = contactListFiltered.get(position);
         holder.name.setText(contact.getFirstname());
         holder.phone.setText(contact.getDesignation());
+
+        if(contact.isMsgRecived()){
+            holder.badge.setVisibility(View.VISIBLE);
+            holder.badge.setText(String.valueOf(contact.getBadgeCount()));
+        }else{
+            holder.badge.setVisibility(View.GONE);
+            holder.badge.setText("");
+        }
 
         String pictureUri = "http://bhimclub.com/webupload/thumb/1a37d2c9-7d8c-4561-9321-8365ca8f760c_1542137706.jpg";
         Glide.with(context)

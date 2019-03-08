@@ -51,22 +51,16 @@ import timber.log.Timber;
 
 import static com.club.bhimclub.bhimclub.EndPointAPIcall.BASE_URL;
 
-public class MyConnectionsActivity extends BaseActivity implements BasicInfoListAdapter.BasicInfoListAdapterListener{
+public class MyConnectionsActivity extends BaseActivity {
 
 
-    Retrofit retrofit;
-    private List<BasicInfoList.BasicInfo> contactList;
-    private BasicInfoListAdapter mAdapter;
+//    Retrofit retrofit;
     private Unbinder unbinder;
 
     @BindView(R.id.loding_progress)
     View mProgressView;
 
-    @BindView(R.id.recycler_view)
-    public RecyclerView recyclerView;
 
-    @BindView(R.id.root_scroll_view)
-    public ScrollView rootScrollView;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,162 +74,29 @@ public class MyConnectionsActivity extends BaseActivity implements BasicInfoList
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(R.string.toolbar_title);
 
-        contactList = new ArrayList<>();
-        mAdapter = new BasicInfoListAdapter(this, contactList, this);
-
-        // white background notification bar
-        whiteNotificationBar(recyclerView);
-
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
-        recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-//        recyclerView.addItemDecoration(new MyDividerItemDecoration(this, DividerItemDecoration.VERTICAL, 36));
-        recyclerView.setAdapter(mAdapter);
-
-        retrofitSetup();
-    }
-
-    private void retrofitSetup() {
-        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
-        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-        OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
-
-        Gson gson = new GsonBuilder()
-                .setLenient()
-                .create();
-
-        retrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
-                .client(client)
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                .build();
 
     }
+
 
     @OnClick(R.id.card_view_first)
-    public void cardViewFirst(){
-        callAPIendPoint(0);
-
-    }
+    public void cardViewFirst(){ callConListActivity(0);}
     @OnClick(R.id.card_view_sec)
     public void cardViewSec(){
-        callAPIendPoint(1);
+        callConListActivity(1);
     }
     @OnClick(R.id.card_view_third)
     public void cardViewThird(){
-        callAPIendPoint(2);
+        callConListActivity(2);
     }
 
-
-
-    private void callAPIendPoint(int i) {
-        showProgress(true);
-        EndPointAPIcall endPointAPIcall = retrofit.create(EndPointAPIcall.class);
-        Observable<BasicInfoList> call;
-        switch(i){
-            case 0:
-                call = endPointAPIcall.getBeaurocratsList();
-                call.subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread())
-                        .map(result ->result.getData())
-                        .subscribe(this::handleResults, this::handleError);
-                break;
-            case 1:
-                call = endPointAPIcall.getProfessionalsList();
-                call.subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread())
-                        .map(result ->result.getData())
-                        .subscribe(this::handleResults, this::handleError);
-                break;
-            case 2:
-                call = endPointAPIcall.getTabExplore();
-                call.subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread())
-                        .map(result ->result.getData())
-                        .subscribe(this::handleResults, this::handleError);
-                break;
-            default:
-                call = endPointAPIcall.getBeaurocratsList();
-                call.subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread())
-                        .map(result ->result.getData())
-                        .subscribe(this::handleResults, this::handleError);
-        }
-
+    private void callConListActivity(int i){
+        Intent intent = new Intent(getApplicationContext(), ContactListActivity.class);
+        intent.putExtra("cType", i);
+        startActivity(intent);
+        finish();
     }
 
-
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
-    private void showProgress(final boolean show) {
-        // On Honeycomb MR2 we have the ViewPropertyAnimator APIs, which allow
-        // for very easy animations. If available, use these APIs to fade-in
-        // the progress spinner.
-            rootScrollView.setVisibility( View.GONE);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR2) {
-            int shortAnimTime = getResources().getInteger(android.R.integer.config_shortAnimTime);
-            mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
-            mProgressView.animate().setDuration(shortAnimTime).alpha(
-                    show ? 1 : 0).setListener(new AnimatorListenerAdapter() {
-                @Override
-                public void onAnimationEnd(Animator animation) {
-                    mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
-                    recyclerView.setVisibility(View.VISIBLE);
-                }
-            });
-
-        } else {
-            // The ViewPropertyAnimator APIs are not available, so simply show
-            // and hide the relevant UI components.
-            mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
-            if(!show){
-                recyclerView.setVisibility(View.VISIBLE);
-            }
-        }
-    }
-    private void handleResults(List<BasicInfoList.BasicInfo> basicInfos) {
-        showProgress(false);
-        if (basicInfos != null && basicInfos.size() != 0) {
-//            recyclerViewAdapter.setData(basicInfotList);
-            Toast.makeText(this, "RESULTS FOUND",
-                    Toast.LENGTH_LONG).show();
-            contactList.addAll(basicInfos);
-            mAdapter.notifyDataSetChanged();
-        } else {
-            Toast.makeText(this, "NO RESULTS FOUND",
-                    Toast.LENGTH_LONG).show();
-        }
-
-    }
-
-    private void handleError(Throwable t) {
-        showProgress(false);
-        Toast.makeText(this, "ERROR IN FETCHING API RESPONSE. Try again",
-                Toast.LENGTH_LONG).show();
-    }
-
-    private void whiteNotificationBar(View view) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            int flags = view.getSystemUiVisibility();
-            flags |= View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
-            view.setSystemUiVisibility(flags);
-            getWindow().setStatusBarColor(Color.WHITE);
-        }
-    }
 
     @Override
-    public void onContactSelected(BasicInfoList.BasicInfo contact) {
-        Toast.makeText(getApplicationContext(), "Selected: " + contact.getFirstname()+ ", " + contact.getDesignation(), Toast.LENGTH_LONG).show();
-
-    }
-
-    @Override
-    public void onBackPressed() {
-        if (rootScrollView.getVisibility() == View.VISIBLE){
-            super.onBackPressed();
-        }else{
-            contactList=null;
-            mAdapter.notifyDataSetChanged();
-            recyclerView.setVisibility(View.GONE);
-            rootScrollView.setVisibility(View.VISIBLE);
-        }
-
-
-    }
+    public void onBackPressed() {super.onBackPressed();}
 }
