@@ -10,8 +10,9 @@ import android.support.annotation.NonNull;
 
 import com.club.bhimclub.bhimclub.dao.DataDao;
 import com.club.bhimclub.bhimclub.model.Login;
+import com.club.bhimclub.bhimclub.model.ProfileImages;
 
-@Database(entities = {Login.class}, version = 1)
+@Database(entities = {ProfileImages.class}, version = 1, exportSchema = false)
 public abstract class MyRoomDatabase extends RoomDatabase {
     public abstract DataDao dataDao();
     private static volatile MyRoomDatabase INSTANCE;
@@ -25,7 +26,7 @@ public abstract class MyRoomDatabase extends RoomDatabase {
                             // Wipes and rebuilds instead of migrating if no Migration object.
                             // Migration is not part of this codelab.
                             .fallbackToDestructiveMigration()
-                            .addCallback(sRoomDatabaseCallback)
+//                            .addCallback(sRoomDatabaseCallback)
                             .build();
                 }
             }

@@ -1,5 +1,7 @@
 package com.club.bhimclub.bhimclub.activity;
 
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -17,9 +19,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.club.bhimclub.bhimclub.EndPointAPIcall;
 import com.club.bhimclub.bhimclub.R;
-import com.club.bhimclub.bhimclub.model.BasicInfoList;
+import com.club.bhimclub.bhimclub.model.ProfileImages;
+import com.club.bhimclub.bhimclub.viewModel.ProfileViewModel;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -27,9 +29,8 @@ import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
-import io.reactivex.Observable;
-import io.reactivex.Scheduler;
-import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.annotations.Nullable;
+import android.arch.lifecycle.Observer;
 import io.reactivex.schedulers.Schedulers;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
@@ -45,6 +46,7 @@ public class HomeActivity extends BaseActivity
     private Unbinder unbinder;
     private SharedPreferences loginPreferences;
     private SharedPreferences.Editor loginPrefsEditor;
+    private ProfileViewModel mProfileViewModel;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,6 +76,21 @@ public class HomeActivity extends BaseActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        mProfileViewModel = ViewModelProviders.of(this).get(ProfileViewModel.class);
+
+        mProfileViewModel.getAlLiveData().observe(this, new Observer<List<ProfileImages>>() {
+            @Override
+            public void onChanged(@Nullable final List<ProfileImages> words) {
+                // Update the cached copy of the words in the adapter.
+//                if(mProfileViewModel.getCoutn() != 0 )
+//                    Toast.makeText(HomeActivity.this,"test" /*String.valueOf(mProfileViewModel.getCoutn())*/,Toast.LENGTH_LONG).show();
+
+                Toast.makeText(HomeActivity.this,"test" /*String.valueOf(mProfileViewModel.getCoutn())*/,Toast.LENGTH_LONG).show();
+//                adapter.setWords(words);
+            }
+    });
+
+        ;
     }
 
    /* private void callEndpoints() {
@@ -152,6 +169,9 @@ public class HomeActivity extends BaseActivity
 
         } if (id == R.id.nav_profile_details) {
             // Handle the camera action
+            Intent i = new Intent(HomeActivity.this, EditProfileActivity.class);
+            startActivity(i);
+
         } else if (id == R.id.nav_change_password) {
 
         } else if (id == R.id.nav_notification) {
