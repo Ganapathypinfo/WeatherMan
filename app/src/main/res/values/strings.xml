@@ -44,6 +44,8 @@
 
     <string name="full_name">Full Name</string>
     <string name="designation">Designation</string>
+    <string name="department">Department</string>
+    <string name="mobile">Mobile</string>
 
     <string name="toolbar_title">Contacts</string>
     <string name="action_search">Search</string>

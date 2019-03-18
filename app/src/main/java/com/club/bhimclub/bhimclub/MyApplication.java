@@ -1,6 +1,8 @@
 package com.club.bhimclub.bhimclub;
 
+import android.app.Activity;
 import android.app.Application;
+import android.os.Bundle;
 import android.text.TextUtils;
 
 //import com.android.volley.Request;
@@ -10,7 +12,7 @@ import com.club.bhimclub.bhimclub.log.ReleaseTree;
 
 import timber.log.Timber;
 
-public class MyApplication extends Application {
+public class MyApplication extends Application implements Application.ActivityLifecycleCallbacks{
     public static final String TAG = MyApplication.class
             .getSimpleName();
     private static MyApplication mInstance;
@@ -31,6 +33,41 @@ public class MyApplication extends Application {
     }
     public void setConnectivityListener(ConnectivityReceiver.ConnectivityReceiverListener listener) {
         ConnectivityReceiver.connectivityReceiverListener = listener;
+    }
+
+    @Override
+    public void onActivityCreated(Activity activity, Bundle bundle) {
+
+    }
+
+    @Override
+    public void onActivityStarted(Activity activity) {
+
+    }
+
+    @Override
+    public void onActivityResumed(Activity activity) {
+
+    }
+
+    @Override
+    public void onActivityPaused(Activity activity) {
+
+    }
+
+    @Override
+    public void onActivityStopped(Activity activity) {
+
+    }
+
+    @Override
+    public void onActivitySaveInstanceState(Activity activity, Bundle bundle) {
+
+    }
+
+    @Override
+    public void onActivityDestroyed(Activity activity) {
+
     }
 /*
     public RequestQueue getRequestQueue() {
