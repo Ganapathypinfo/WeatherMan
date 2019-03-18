@@ -153,7 +153,8 @@ public class HomeActivity extends BaseActivity
         } if (id == R.id.nav_profile_details) {
             // Handle the camera action
         } else if (id == R.id.nav_change_password) {
-
+            Intent i = new Intent(HomeActivity.this, ChangePassword.class);
+            startActivity(i);
         } else if (id == R.id.nav_notification) {
 
         } else if (id == R.id.nav_requests) {

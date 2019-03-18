@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
 import android.view.Display;
 import android.view.MenuItem;
@@ -29,6 +30,13 @@ public class ViewContactsProfileActivity extends BaseActivity  {
         super.onCreate(savedInstanceState);
         Bundle bundle = getIntent().getExtras();
         assert bundle != null;
+
+
+        Window window = this.getWindow();
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.setStatusBarColor(ContextCompat.getColor(this, R.color.colorPrimaryDark));
+
         setContentView(R.layout.activity_view_contacts_profile);
         Toolbar toolbar= findViewById(R.id.toolbar);
         appBarLayout = findViewById(R.id.app_bar);
@@ -55,7 +63,7 @@ public class ViewContactsProfileActivity extends BaseActivity  {
         /*Palette.from(bitmap).generate(new Palette.PaletteAsyncListener() {
             @Override
             public void onGenerated(Palette palette) {
-                int mutedColor = palette.getMutedColor(getResources().getColor(R.color.colorPrimary));
+                int mutedColor = palette.getMutedColor(getResources().getColor(R.color.colorPrimaryDark));
                 collapsingToolbarLayout.setContentScrimColor(mutedColor);
             }
         });*/
