@@ -69,23 +69,14 @@ public class MyConnectionsActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_connections);
 
-        Window window = this.getWindow();
-        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        window.setStatusBarColor(ContextCompat.getColor(this, R.color.colorPrimaryDark));
-
 
         unbinder = ButterKnife.bind(this);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        // toolbar fancy stuff
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(R.string.toolbar_title);
 
 
     }
-
 
     @OnClick(R.id.card_view_first)
     public void cardViewFirst(){ callConListActivity(0);}
@@ -106,6 +97,6 @@ public class MyConnectionsActivity extends BaseActivity {
     }
 
 
-    @Override
-    public void onBackPressed() {super.onBackPressed();}
+    /*@Override
+    public void onBackPressed() {super.onBackPressed();}*/
 }
