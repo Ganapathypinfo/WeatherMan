@@ -10,6 +10,7 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.provider.ContactsContract;
 import android.provider.MediaStore;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -48,6 +49,7 @@ public class InboxActivity extends BaseActivity implements BasicInfoListAdapter.
 
     // Pop up
     ContentResolver resolver;
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,7 +66,7 @@ public class InboxActivity extends BaseActivity implements BasicInfoListAdapter.
 
         // toolbar fancy stuff
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle(R.string.toolbar_title);
+        getSupportActionBar().setTitle("Chatting");
 
         recyclerView = findViewById(R.id.recycler_view);
         contactList = new ArrayList<>();

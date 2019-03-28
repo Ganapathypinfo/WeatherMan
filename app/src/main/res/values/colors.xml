@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#EA4E2E</color>
-    <color name="colorButton">#f7fd4b27</color>
-    <color name="colorPrimaryDark">#dc3816</color>
-    <color name="blueDark">#111b5e</color>
+    <color name="colorPrimary">@color/blueDark</color>
+    <color name="colorButton">#2E65D1</color>
+    <color name="colorPrimaryDark">@color/blueDark</color>
+    <color name="blueDark">	#013366</color>
+    <color name="lightBlue">#434d94</color>
     <color name="gray">#b3adb7</color>
     <color name="black">#000000</color>
     <color name="skyBlue">#16ccf1</color>
     <color name="green_light">#34fa4e</color>
-    <color name="colorAccent">#FF4081</color>
-    <color name="appColorTheme">#EA4E2E</color>
+    <color name="colorAccent">@color/white</color>
+   <!-- <color name="appColorTheme">#9e2f42c7</color>-->
     <color name="white">#ffffffff</color>
     <color name="faded_white">#faf4f4</color>
     <color name="contact_name">#333333</color>

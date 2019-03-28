@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:visibility="gone"
-        android:layout_margin="10dp">
+        android:layout_margin="@dimen/dp10">
         <com.ics.zyter.core.wiget.TextView_Lota_Regular
             android:id="@+id/txv_title_name"
             android:layout_width="match_parent"
@@ -43,7 +43,7 @@
         android:layout_width="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:padding="10dp"
+        android:padding="@dimen/dp10"
         android:layout_height="wrap_content">
 
 

@@ -32,7 +32,8 @@
         <android.support.v7.widget.Toolbar
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@drawable/actionbar_background">
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -45,7 +46,8 @@
                 android:textSize="20dp"
                 android:layout_gravity="center"
                 android:gravity="bottom"
-                android:textColor="#fff"/>
+                android:textColor="#fff"
+                android:textAppearance="@style/AppTheme.Text"/>
             <TextView
                 android:id="@+id/txtSave"
                 android:layout_width="wrap_content"
@@ -54,9 +56,11 @@
                 android:textSize="14dp"
                 android:layout_gravity="right"
                 android:layout_marginRight="20dp"
-                android:textColor="#fff"/>
+                android:textColor="#fff"
+                android:textAppearance="@style/AppTheme.Text"/>
         </android.support.v7.widget.Toolbar>
         <LinearLayout
+            android:id="@+id/ll_theamImage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -72,11 +76,11 @@
                 android:layout_height="100dp"
                 android:src="@drawable/contact_icon_profile"
                 android:layout_marginTop="70dp"
-                android:layout_marginLeft="5dp"
-                app:view_shadowRadius="2dp"
-                app:view_shadowDx="2dp"
+                android:layout_marginLeft="@dimen/dp5"
+                app:view_shadowRadius="@dimen/dp2"
+                app:view_shadowDx="@dimen/dp2"
                 app:view_shadowDy="0dp"
-                app:view_borderWidth="2dp"
+                app:view_borderWidth="@dimen/dp2"
                 app:view_borderColor="#cccccc"
                 />
                 <ImageView
@@ -88,7 +92,87 @@
                 android:src="@android:drawable/ic_menu_camera"/>
             </RelativeLayout>
         </LinearLayout>
+
+
     </FrameLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark"
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/activity_margin"
+        android:paddingBottom="@dimen/activity_margin"
+        android:weightSum="3">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1320"
+                android:textColor="@android:color/white"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="posts"
+                android:textColor="@android:color/white"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="4.3m"
+                android:textColor="@android:color/white"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="followers"
+                android:textColor="@android:color/white"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="123"
+                android:textColor="@android:color/white"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="following"
+                android:textColor="@android:color/white"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </LinearLayout>
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -107,7 +191,8 @@
                     android:text="Name"
                     android:textSize="14sp"
                     android:layout_marginLeft="15dp"
-                    android:padding="20dp"/>
+                    android:padding="20dp"
+                    android:textAppearance="@style/AppTheme.Text"/>
                 <EditText
                     android:id="@+id/personName"
                     android:layout_width="0dp"
@@ -118,7 +203,8 @@
                     android:inputType="textEmailAddress"
                     android:padding="16dp"
                     android:layout_gravity="center"
-                    android:background="#00000000"/>
+                    android:background="#00000000"
+                    android:textAppearance="@style/AppTheme.Text"/>
             </LinearLayout>
             <View
                 android:layout_width="match_parent"
@@ -135,7 +221,8 @@
                     android:text="Email"
                     android:textSize="14dp"
                     android:layout_marginLeft="15dp"
-                    android:padding="20dp"/>
+                    android:padding="20dp"
+                    android:textAppearance="@style/AppTheme.Text"/>
                 <EditText
                     android:id="@+id/personEmail"
                     android:layout_width="0dp"
@@ -146,7 +233,8 @@
                     android:inputType="textEmailAddress"
                     android:padding="16dp"
                     android:layout_gravity="center"
-                    android:background="#00000000"/>
+                    android:background="#00000000"
+                    android:textAppearance="@style/AppTheme.Text"/>
             </LinearLayout>
             <View
                 android:layout_width="match_parent"
@@ -163,7 +251,8 @@
                     android:text="@string/mobile"
                     android:textSize="14dp"
                     android:layout_marginLeft="15dp"
-                    android:padding="20dp"/>
+                    android:padding="20dp"
+                    android:textAppearance="@style/AppTheme.Text"/>
                 <EditText
                     android:id="@+id/personPhone"
                     android:layout_width="0dp"
@@ -174,7 +263,8 @@
                     android:inputType="number"
                     android:padding="16dp"
                     android:layout_gravity="center"
-                    android:background="#00000000"/>
+                    android:background="#00000000"
+                    android:textAppearance="@style/AppTheme.Text"/>
             </LinearLayout>
             <View
                 android:layout_width="match_parent"
@@ -191,7 +281,8 @@
                     android:text="@string/designation"
                     android:textSize="14dp"
                     android:layout_marginLeft="15dp"
-                    android:padding="20dp"/>
+                    android:padding="20dp"
+                    android:textAppearance="@style/AppTheme.Text"/>
                 <EditText
                     android:id="@+id/personDesignation"
                     android:layout_width="0dp"
@@ -202,7 +293,8 @@
                     android:inputType="text"
                     android:padding="16dp"
                     android:layout_gravity="center"
-                    android:background="#00000000"/>
+                    android:background="#00000000"
+                    android:textAppearance="@style/AppTheme.Text"/>
             </LinearLayout>
             <View
                 android:layout_width="match_parent"
@@ -220,7 +312,8 @@
                     android:textSize="14dp"
                     android:padding="20dp"
                     android:layout_marginLeft="15dp"
-                    android:id="@+id/myTextView" />
+                    android:id="@+id/myTextView"
+                    android:textAppearance="@style/AppTheme.Text"/>
                 <EditText
                     android:id="@+id/personDepartment"
                     android:layout_width="0dp"
@@ -230,7 +323,8 @@
                     android:textSize="14sp"
                     android:hint="@string/department"
                     android:background="#00000000"
-                    android:padding="20dp"/>
+                    android:padding="20dp"
+                    android:textAppearance="@style/AppTheme.Text"/>
             </LinearLayout>
             <View
                 android:layout_width="match_parent"
@@ -247,7 +341,8 @@
                     android:text="@string/deactivate_account"
                     android:textSize="14dp"
                     android:padding="20dp"
-                    android:layout_marginLeft="15dp"/>
+                    android:layout_marginLeft="15dp"
+                    android:textAppearance="@style/AppTheme.Text"/>
                 <com.rey.material.widget.Switch
                     style="@style/MaterialSwitch"
                     android:layout_width="wrap_content"

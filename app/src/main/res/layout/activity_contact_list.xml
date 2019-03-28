@@ -19,7 +19,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
+            android:background="@drawable/actionbar_background"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     </android.support.design.widget.AppBarLayout>
@@ -28,7 +28,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:divider="@android:color/black"
-        android:dividerHeight="8dp"
+        android:dividerHeight="@dimen/dp8"
         android:scrollbars="vertical" />
     </LinearLayout>
 </RelativeLayout>

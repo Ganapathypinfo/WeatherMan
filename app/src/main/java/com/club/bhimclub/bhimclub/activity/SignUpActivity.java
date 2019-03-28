@@ -1,6 +1,8 @@
 package com.club.bhimclub.bhimclub.activity;
 
+import android.annotation.TargetApi;
 import android.content.Intent;
+import android.os.Build;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -45,6 +47,7 @@ public class SignUpActivity extends BaseActivity {
     EditText mRetryPasswordView;
     @BindView(R.id.type_spinner)
     Spinner mTypeSpinner;
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,7 +73,7 @@ public class SignUpActivity extends BaseActivity {
         });
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.select_user_type, android.R.layout.simple_spinner_item);
+                R.array.select_user_type, R.layout.spinner_item_white);
 // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 // Apply the adapter to the spinner

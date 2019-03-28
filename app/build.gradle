@@ -4,7 +4,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.club.bhimclub.bhimclub"
-        minSdkVersion 21
+        minSdkVersion 19
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -46,7 +46,7 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 //    CircularImageView
     implementation 'com.subinkrishna:circularimageview:1.2.2'
-    implementation'com.alexzh:circleimageview:1.1.2@aar'
+    implementation 'com.alexzh:circleimageview:1.1.2@aar'
 
     // card view
     implementation 'com.android.support:cardview-v7:28.0.0'

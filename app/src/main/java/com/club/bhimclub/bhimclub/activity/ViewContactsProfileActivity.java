@@ -3,7 +3,9 @@ package com.club.bhimclub.bhimclub.activity;
 import android.app.Dialog;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
@@ -25,6 +27,7 @@ public class ViewContactsProfileActivity extends BaseActivity  {
     private static final String TAG = ViewContactsProfileActivity.class.getSimpleName();
     private AppBarLayout appBarLayout;
     CoordinatorLayout coordinatorLayout;
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,10 +43,10 @@ public class ViewContactsProfileActivity extends BaseActivity  {
         setContentView(R.layout.activity_view_contacts_profile);
         Toolbar toolbar= findViewById(R.id.toolbar);
         appBarLayout = findViewById(R.id.app_bar);
-
+        setSupportActionBar(toolbar);
         // toolbar fancy stuff
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//        getSupportActionBar().setTitle("Profile View");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Profile View");
 
         final Display dWidth = getWindowManager().getDefaultDisplay();
         coordinatorLayout = (CoordinatorLayout) findViewById(R.id.cordinator_layout);
@@ -91,6 +94,7 @@ public class ViewContactsProfileActivity extends BaseActivity  {
         return super.onOptionsItemSelected(item);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void mImageFullView(View view) {
         final Dialog nagDialog = new Dialog(this, android.R.style.Theme_Black_NoTitleBar_Fullscreen);
             //        nagDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);

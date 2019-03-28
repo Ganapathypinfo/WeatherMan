@@ -2,6 +2,7 @@ package com.club.bhimclub.bhimclub.activity;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Application;
 import android.app.LoaderManager;
@@ -28,6 +29,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
@@ -97,12 +99,16 @@ public class LoginActivity extends BaseActivity implements LoaderManager.LoaderC
     View mLoginFormView;
     @BindView(R.id.cb_remember)
     CheckBox cbRemember;
+    @BindView(R.id.email_sign_in_button)
+    Button mEmailSignInButton;
+
     private SharedPreferences loginPreferences;
     private SharedPreferences.Editor loginPrefsEditor;
     private Boolean saveLogin;
 
     public LoginViewModel mLoginViewModel;
 
+    @SuppressLint({"ClickableViewAccessibility", "NewApi"})
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -122,7 +128,13 @@ public class LoginActivity extends BaseActivity implements LoaderManager.LoaderC
             mEmailView.setText(loginPreferences.getString("username", ""));
             mPasswordView.setText(loginPreferences.getString("password", ""));
             cbRemember.setChecked(true);
+            mPasswordView.requestFocus();
+            mPasswordView.setSelection(loginPreferences.getString("password", "").length());
+            hideKeyboard(LoginActivity.this);
+
         }
+
+
         /*mLoginViewModel = ViewModelProviders.of(this).get(LoginViewModel.class);
         mLoginViewModel.getMyLogin().observe(this, new Observer<List<Login>>() {
             @Override
@@ -157,7 +169,7 @@ public class LoginActivity extends BaseActivity implements LoaderManager.LoaderC
             }
         });
 
-        Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
+
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -328,6 +340,7 @@ public class LoginActivity extends BaseActivity implements LoaderManager.LoaderC
 
             finish();
             Intent mySuperIntent = new Intent(LoginActivity.this, HomeActivity.class);
+            mySuperIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
             startActivity(mySuperIntent);
         }else if(loginInfo.getSuccess() == 0){
             mPasswordView.setError(loginInfo.getMessage());

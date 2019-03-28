@@ -12,7 +12,7 @@
     <string name="action_sign_in">Sign in </string>
     <string name="action_sign_in_short">Sign in</string>
     <string name="action_sign_up">sign up</string>
-    <string name="action_sign_up_short">Sign up</string>
+    <string name="action_sign_up_short">Create new user here</string>
     <string name="error_invalid_email">This email address is invalid</string>
     <string name="error_invalid_password">This password is too short</string>
     <string name="error_incorrect_password">This password is incorrect</string>
@@ -46,6 +46,7 @@
     <string name="designation">Designation</string>
     <string name="department">Department</string>
     <string name="mobile">Mobile</string>
+    <string name="chat">Chat</string>
 
     <string name="toolbar_title">Contacts</string>
     <string name="action_search">Search</string>
@@ -53,6 +54,7 @@
     <string name="beaurocrats">Beaurocrats</string>
     <string name="professionals">Professionals</string>
     <string name="entrepreneur">Entrepreneur</string>
+    <string name="jobSeeker">JobSeekers</string>
     <string name="view_all">View All</string>
     <string name="title_activity_change_password">ChangePassword</string>
     <string-array name="select_user_type">
@@ -60,7 +62,7 @@
         <item>Beaurocrats</item>
         <item>Professionals</item>
         <item>Entrepreneur</item>
-        <item>Job seeker</item>
+        <item>Job seekers</item>
     </string-array>
 
     <style name="AppDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
@@ -73,5 +75,17 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="status_fragment">Status</string>
+    <string name="info_fragment">Info</string>
+    <string name="requests_fragment">Requests</string>
+    <string name="connections_fragment">Connections</string>
+
+    <string name="info_frag_overview">Overview</string>
+    <string name="info_frag_Designation">Designation</string>
+    <string name="info_department">Department</string>
+    <string name="info_employee_type">Employee Type</string>
+    <string name="info_frag_Location">Location</string>
 
 </resources>

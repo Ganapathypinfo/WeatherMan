@@ -2,6 +2,7 @@ package com.club.bhimclub.bhimclub.activity;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.LoaderManager;
 import android.content.Intent;
@@ -19,10 +20,14 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ScrollView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.club.bhimclub.bhimclub.CustomViews.MyDividerItemDecoration;
@@ -57,39 +62,58 @@ import static com.club.bhimclub.bhimclub.EndPointAPIcall.BASE_URL;
 public class MyConnectionsActivity extends BaseActivity {
 
 
-//    Retrofit retrofit;
+    //    Retrofit retrofit;
     private Unbinder unbinder;
 
-    @BindView(R.id.loding_progress)
-    View mProgressView;
 
+    LinearLayout mLinearLayout;
+    LinearLayout mNearLinearLayout;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my_connections);
+        setContentView(R.layout.category_layout);
 
+        mLinearLayout = findViewById(R.id.view_group_one);
+        mNearLinearLayout = findViewById(R.id.view_group_sec);
+        LinearLayout mBeaurocrats = findViewById(R.id.llBeaurocrats);
+        LinearLayout mProfessor = findViewById(R.id.llProfessor);
+        LinearLayout mEnterpreneur = findViewById(R.id.llEnterpreneur);
+        LinearLayout mJobseeker = findViewById(R.id.lljobseeker);
 
-        unbinder = ButterKnife.bind(this);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(R.string.toolbar_title);
 
+        mBeaurocrats.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                callConListActivity(0);
+            }
+        });
+        mProfessor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                callConListActivity(1);
+            }
+        });
+        mEnterpreneur.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                callConListActivity(2);
+            }
+        });
+        mJobseeker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                callConListActivity(3);
+            }
+        });
 
     }
 
-    @OnClick(R.id.card_view_first)
-    public void cardViewFirst(){ callConListActivity(0);}
-    @OnClick(R.id.card_view_sec)
-    public void cardViewSec(){
-        callConListActivity(1);
-    }
-    @OnClick(R.id.card_view_third)
-    public void cardViewThird(){
-        callConListActivity(2);
-    }
 
-    private void callConListActivity(int i){
+    private void callConListActivity(int i) {
         Intent intent = new Intent(getApplicationContext(), ContactListActivity.class);
         intent.putExtra("cType", i);
         startActivity(intent);
@@ -97,6 +121,8 @@ public class MyConnectionsActivity extends BaseActivity {
     }
 
 
-    /*@Override
-    public void onBackPressed() {super.onBackPressed();}*/
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
 }
