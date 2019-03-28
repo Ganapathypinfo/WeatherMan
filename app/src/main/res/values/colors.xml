@@ -16,4 +16,5 @@
     <color name="contact_name">#333333</color>
     <color name="contact_number">#8c8c8c</color>
     <color name="light_gray">#fcfcfc</color>
+    <color name="profile_default_tint">#e0e0e0</color>
 </resources>

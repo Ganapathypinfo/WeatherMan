@@ -11,7 +11,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="left"
-        android:background="@drawable/out_message_bg">
+        android:background="@drawable/out_message_bg"
+        android:backgroundTint="@color/gray">
 
         <TextView
             android:id="@+id/chat_left_msg_text_view"
@@ -19,7 +20,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="@dimen/dp10"
-            android:textAppearance="@style/AppTheme.Text"/>
+            android:textAppearance="@style/AppTheme.Text"
+            />
 
     </LinearLayout>
 
@@ -29,7 +31,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
-        android:background="@drawable/in_message_bg">
+        android:background="@drawable/in_message_bg"
+        android:backgroundTint="@color/blueDark">
 
         <TextView
             android:id="@+id/chat_right_msg_text_view"
@@ -37,7 +40,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="@dimen/dp10"
-            android:textAppearance="@style/AppTheme.Text"/>
+            android:textAppearance="@style/AppTheme.Text"
+            android:textColor="@color/white"/>
 
     </LinearLayout>
 

@@ -71,7 +71,7 @@
                 android:layout_height="wrap_content">
 
                 <com.alexzh.circleimageview.CircleImageView
-                android:id="@+id/circleview"
+                android:id="@+id/cpersonview"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:src="@drawable/contact_icon_profile"
