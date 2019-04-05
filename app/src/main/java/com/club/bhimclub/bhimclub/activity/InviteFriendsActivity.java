@@ -73,7 +73,7 @@ public class InviteFriendsActivity extends BaseActivity implements ContactsAdapt
 
         // toolbar fancy stuff
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle(R.string.toolbar_title);
+//        getSupportActionBar().setTitle(R.string.toolbar_title);
 
         recyclerView = findViewById(R.id.recycler_view);
         contactList = new ArrayList<>();

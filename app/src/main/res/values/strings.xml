@@ -1,7 +1,11 @@
 <resources>
     <string name="app_name">Bhim Club</string>
     <string name="app_subject">Bhim Club is a Largest International Networking App among Dalit professionals. It allows only selected profiles like Beaurocrats, Entrepreneurs and Professionals. Our ultimate aim is to empower Dalit community by connecting potential Profiles each other.</string>
-    <string name="title_activity_login">Sign in</string>
+    <string name="title_activity_login">Login</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_personal_info">Personal Info</string>
+    <string name="title_activity_change_password">Change Password</string>
+    <string name="title_activity_myConnections">Contact Types</string>
 
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
@@ -21,7 +25,6 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
-    <string name="title_activity_home">HomeActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
@@ -56,7 +59,6 @@
     <string name="entrepreneur">Entrepreneur</string>
     <string name="jobSeeker">JobSeekers</string>
     <string name="view_all">View All</string>
-    <string name="title_activity_change_password">ChangePassword</string>
     <string-array name="select_user_type">
         <item>Select user type</item>
         <item>Beaurocrats</item>
@@ -65,16 +67,7 @@
         <item>Job seekers</item>
     </string-array>
 
-    <style name="AppDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:editTextColor">@color/gray</item>
-        <item name="android:textColorPrimary">@color/black</item>
-        <item name="android:textColorSecondary">@color/black</item>
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-    </style>
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="status_fragment">Status</string>
@@ -96,5 +89,6 @@
     <string name="dialog_permission_title">Grant Permissions</string>
     <string name="dialog_permission_message">This app needs permission to use this feature. You can grant them in app settings.</string>
     <string name="go_to_settings">GOTO SETTINGS</string>
+    <string name="menu_save">Save</string>
 
 </resources>

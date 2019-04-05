@@ -20,6 +20,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.club.bhimclub.bhimclub.R;
 import com.club.bhimclub.bhimclub.fragments.ConnectionsFragment;
@@ -64,10 +65,6 @@ public class HomeActivity extends BaseActivity
             public void onClick(View view) {
                 Intent i = new Intent(HomeActivity.this, InboxActivity.class);
                 startActivity(i);
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//                Toast.makeText(HomeActivity.this,"Replace with your own action" ,Toast.LENGTH_LONG).show();
-//
             }
         });
 
@@ -106,9 +103,9 @@ public class HomeActivity extends BaseActivity
             public void onChanged(@Nullable final List<ProfileImages> words) {
                 // Update the cached copy of the words in the adapter.
 //                if(mProfileViewModel.getCoutn() != 0 )
-//                    Toast.makeText(HomeActivity.this,"test" /*String.valueOf(mProfileViewModel.getCoutn())*/,Toast.LENGTH_LONG).show();
+                    Toast.makeText(HomeActivity.this,"test" /*String.valueOf(mProfileViewModel.getCoutn())*/,Toast.LENGTH_LONG).show();
 
-//                Toast.makeText(HomeActivity.this,"test" /*String.valueOf(mProfileViewModel.getCoutn())*/,Toast.LENGTH_LONG).show();
+                Toast.makeText(HomeActivity.this,   words.get(0).getPersonalImage(),Toast.LENGTH_LONG).show();
 //                adapter.setWords(words);
             }
     });

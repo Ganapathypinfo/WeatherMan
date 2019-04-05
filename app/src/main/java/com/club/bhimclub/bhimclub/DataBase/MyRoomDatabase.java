@@ -1,4 +1,4 @@
-package com.club.bhimclub.bhimclub;
+package com.club.bhimclub.bhimclub.DataBase;
 
 import android.arch.persistence.db.SupportSQLiteDatabase;
 import android.arch.persistence.room.Database;
@@ -9,7 +9,6 @@ import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 
 import com.club.bhimclub.bhimclub.dao.DataDao;
-import com.club.bhimclub.bhimclub.model.Login;
 import com.club.bhimclub.bhimclub.model.ProfileImages;
 
 @Database(entities = {ProfileImages.class}, version = 1, exportSchema = false)

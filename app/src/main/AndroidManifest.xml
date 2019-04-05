@@ -64,7 +64,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.InviteFriendsActivity"
-            android:label="@string/action_sign_up"
+            android:label="@string/toolbar_title"
             android:theme="@style/AppTheme.NoActionBar">
 
             <!--
