@@ -72,7 +72,7 @@ public class EditProfileActivity extends AppCompatActivity {
 
     @OnClick(R.id.theamCamera)
     public void TheamCamera(){
-
+        
     }
     @OnClick(R.id.personCamera)
     public void PersonCamera(){
