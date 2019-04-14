@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="10dp">
+        android:padding="@dimen/dp10">
 
 
 
@@ -19,7 +19,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="@dimen/dp10"
             android:orientation="vertical">
 
             <TextView
@@ -28,20 +28,22 @@
                 android:ellipsize="end"
                 android:singleLine="true"
                 android:text="Name"
-                android:textColor="@color/colorPrimary" />
+                android:textColor="@color/colorPrimary"
+                android:textAppearance="@style/AppTheme.Text"/>
 
             <TextView
                 android:id="@+id/pop_uci_task_roal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="5dp"
+                android:layout_marginRight="@dimen/dp5"
                 android:ellipsize="end"
-                android:paddingBottom="5dp"
-                android:paddingTop="5dp"
+                android:paddingBottom="@dimen/dp5"
+                android:paddingTop="@dimen/dp5"
                 android:singleLine="true"
                 android:text="Ganapathy"
                 android:textAllCaps="false"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:textAppearance="@style/AppTheme.Text" />
 
             <!--<include layout="@layout/viewprofile_separator"></include>-->
 
@@ -51,21 +53,23 @@
                 android:ellipsize="end"
                 android:singleLine="true"
                 android:text="DOB"
-                android:textColor="@color/colorPrimary" />
+                android:textColor="@color/colorPrimary"
+                android:textAppearance="@style/AppTheme.Text"/>
 
 
             <TextView
                 android:id="@+id/pop_uci_d_speciality"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="5dp"
+                android:layout_marginRight="@dimen/dp5"
                 android:ellipsize="end"
-                android:paddingBottom="5dp"
-                android:paddingTop="5dp"
+                android:paddingBottom="@dimen/dp5"
+                android:paddingTop="@dimen/dp5"
                 android:singleLine="true"
                 android:text="02 Mar 2019"
                 android:textAllCaps="false"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:textAppearance="@style/AppTheme.Text" />
 
             <!--<include layout="@layout/viewprofile_separator"></include>-->
 
@@ -75,21 +79,23 @@
                 android:ellipsize="end"
                 android:singleLine="true"
                 android:text="phone number"
-                android:textColor="@color/colorPrimary" />
+                android:textColor="@color/colorPrimary"
+                android:textAppearance="@style/AppTheme.Text" />
 
 
             <TextView
                 android:id="@+id/pop_uci_prim_phone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="5dp"
+                android:layout_marginRight="@dimen/dp5"
                 android:ellipsize="end"
-                android:paddingBottom="5dp"
-                android:paddingTop="5dp"
+                android:paddingBottom="@dimen/dp5"
+                android:paddingTop="@dimen/dp5"
                 android:singleLine="true"
                 android:text="9024588776"
                 android:textAllCaps="false"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:textAppearance="@style/AppTheme.Text"/>
 
             <!--<include layout="@layout/viewprofile_separator"></include>-->
 
@@ -99,21 +105,24 @@
                 android:ellipsize="end"
                 android:singleLine="true"
                 android:text="Login type"
-                android:textColor="@color/colorPrimary" />
+                android:textColor="@color/colorPrimary"
+                android:textAppearance="@style/AppTheme.Text"
+                />
 
 
             <TextView
                 android:id="@+id/pop_uci_d_provider"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="5dp"
+                android:layout_marginRight="@dimen/dp5"
                 android:ellipsize="end"
-                android:paddingBottom="5dp"
-                android:paddingTop="5dp"
+                android:paddingBottom="@dimen/dp5"
+                android:paddingTop="@dimen/dp5"
                 android:singleLine="true"
                 android:text="@string/professionals"
                 android:textAllCaps="false"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:textAppearance="@style/AppTheme.Text"/>
 
             <!--<include layout="@layout/viewprofile_separator"></include>-->
         </LinearLayout>

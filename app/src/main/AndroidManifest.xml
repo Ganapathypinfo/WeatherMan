@@ -25,13 +25,11 @@
             android:name=".activity.SplashActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
-            <!--
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            -->
         </activity>
 
         <receiver
@@ -50,11 +48,15 @@
             android:name=".activity.HomeActivity"
             android:label="@string/title_activity_home"
             android:theme="@style/AppTheme.NoActionBar">
+
+<!--
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+-->
+
         </activity>
         <activity
             android:name=".activity.SignUpActivity"
@@ -62,7 +64,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.InviteFriendsActivity"
-            android:label="@string/action_sign_up"
+            android:label="@string/toolbar_title"
             android:theme="@style/AppTheme.NoActionBar">
 
             <!--
@@ -75,15 +77,14 @@
         </activity>
         <activity
             android:name=".activity.MyConnectionsActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" >
 
-            <!--
-            <intent-filter>
+            <!--<intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-            -->
+            </intent-filter>-->
         </activity>
         <activity
             android:name=".activity.ContactListActivity"
@@ -91,23 +92,53 @@
         <activity
             android:name=".activity.InboxActivity"
             android:theme="@style/AppTheme.NoActionBar">
-
-            <!--
-            <intent-filter>
+            <!--<intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-            -->
+            </intent-filter>-->
         </activity>
+        <activity android:name=".activity.SendTextActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            >
+           <!-- <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>-->
+        </activity>
+        <activity android:name=".activity.ViewContactsProfileActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            ></activity>
+
         <activity
-            android:name=".activity.SendTextActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".activity.ViewContactsProfileActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:name=".activity.ChangePassword"
+            android:label="@string/title_activity_change_password"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppDialogTheme" />
+
         <activity android:name=".activity.EditProfileActivity"
             android:theme="@style/AppTheme.NoActionBar" ></activity>
+
+        <activity android:name=".activity.ImagePickerActivity"
+            android:theme="@style/AppTheme.NoActionBar" ></activity>
+        <!-- uCrop cropping activity -->
+        <activity
+            android:name="com.yalantis.ucrop.UCropActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <!-- cache directory file provider paths -->
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
     </application>
 
 </manifest>

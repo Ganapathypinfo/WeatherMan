@@ -34,6 +34,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="220dp"
                 android:adjustViewBounds="true"
+                android:layout_marginTop="@dimen/dp56"
                 android:onClick="mImageFullView"
                 android:scaleType="centerCrop"
                 android:src="@drawable/contact_icon_profile"
@@ -44,7 +45,7 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:background="?attr/colorPrimary"
+                android:background="@drawable/actionbar_background"
                 app:popupTheme="@style/AppTheme.PopupOverlay" />
 
         </android.support.design.widget.CollapsingToolbarLayout>

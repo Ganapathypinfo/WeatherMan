@@ -3,29 +3,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="@dimen/nav_header_height"
-    android:background="@drawable/side_nav_bar"
+    android:background="@drawable/kamran"
     android:gravity="bottom"
     android:orientation="vertical"
-    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/dp8"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingTop="@dimen/dp8"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
-    <!--<ImageView
+   <!-- <ImageView
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
+        android:layout_width="wrap_conteOnt"
         android:layout_height="wrap_content"
         android:contentDescription="@string/nav_header_desc"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
-        app:srcCompat="@mipmap/ic_launcher_round" />-->
-
+        app:srcCompat="@mipmap/ic_launcher_round" />
+-->
     <com.subinkrishna.widget.CircularImageView
-        android:id="@+id/imageView"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:id="@+id/ivNavProfilePic"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         app:srcCompat="@mipmap/ic_launcher_round"
-        app:ci_borderWidth="2dp"
+        app:ci_borderWidth="@dimen/dp2"
         app:ci_borderColor="@android:color/white"
         app:ci_placeholderBackgroundColor="@android:color/darker_gray"
         app:ci_placeholderText="AS"
@@ -34,16 +34,19 @@
         app:ci_shadowRadius="5.0"
         app:ci_shadowColor="#999999" />
     <TextView
+        android:id="@+id/tvNavName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/nav_header_vertical_spacing"
         android:text="@string/nav_header_title"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        android:textColor="@color/white"
+        android:textAppearance="@style/AppTheme.Text" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tvNavEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/nav_header_subtitle" />
+        android:text="@string/nav_header_subtitle"
+        android:textColor="@color/white"
+        android:textAppearance="@style/AppTheme.Text" />
 
 </LinearLayout>

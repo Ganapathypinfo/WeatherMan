@@ -1,273 +1,424 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <FrameLayout
-        android:layout_width="wrap_content"
-        android:layout_height="260dp"
-        android:background="#000000">
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
 
-        <ImageView
-            android:id="@+id/imgTheam"
-            android:layout_width="match_parent"
-            android:layout_height="260dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/kamran"
-            android:alpha="0.8" />
-            <ImageView
-                android:id="@+id/theamCamera"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentBottom="true"
-                android:padding="15dp"
-                android:src="@android:drawable/ic_menu_camera"/>
-        </RelativeLayout>
         <android.support.v7.widget.Toolbar
-            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/gobackplease"
-                android:layout_marginLeft="20dp"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Personal Info"
-                android:textSize="20dp"
-                android:layout_gravity="center"
-                android:gravity="bottom"
-                android:textColor="#fff"/>
-            <TextView
-                android:id="@+id/txtSave"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Save"
-                android:textSize="14dp"
-                android:layout_gravity="right"
-                android:layout_marginRight="20dp"
-                android:textColor="#fff"/>
-        </android.support.v7.widget.Toolbar>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            >
-            <RelativeLayout
-                android:id="@+id/iv_myprofiler"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content">
+            android:layout_height="?attr/actionBarSize"
+            android:background="@drawable/actionbar_background"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
 
-                <com.alexzh.circleimageview.CircleImageView
-                android:id="@+id/circleview"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:src="@drawable/contact_icon_profile"
-                android:layout_marginTop="70dp"
-                android:layout_marginLeft="5dp"
-                app:view_shadowRadius="2dp"
-                app:view_shadowDx="2dp"
-                app:view_shadowDy="0dp"
-                app:view_borderWidth="2dp"
-                app:view_borderColor="#cccccc"
-                />
-                <ImageView
-                    android:id="@+id/personCamera"
-                android:layout_width="wrap_content"
+            <TextView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="140dp"
-                android:layout_alignParentRight="true"
-                android:src="@android:drawable/ic_menu_camera"/>
-            </RelativeLayout>
-        </LinearLayout>
-    </FrameLayout>
+                android:text="@string/title_personal_info"
+                android:textAppearance="@style/AppTheme.Text"
+                android:textSize="16sp"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:background="#000000">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    >
+
+                    <ImageView
+                        android:id="@+id/imgTheam"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:alpha="0.8"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/kamran" />
+
+                    <ImageView
+                        android:id="@+id/theamCamera"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentBottom="true"
+                        android:padding="15dp"
+                        android:src="@android:drawable/ic_menu_camera" />
+                </RelativeLayout>
+
+             <!--   <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/actionbar_background">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:background="@drawable/gobackplease" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="bottom"
+                        android:text="Personal Info"
+                        android:textAppearance="@style/AppTheme.Text"
+                        android:textColor="#fff"
+                        android:textSize="20dp" />
+
+                    <TextView
+                        android:id="@+id/txtSave"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:layout_marginRight="20dp"
+                        android:text="Save"
+                        android:textAppearance="@style/AppTheme.Text"
+                        android:textColor="#fff"
+                        android:textSize="14dp" />
+                </android.support.v7.widget.Toolbar>
+-->
+                <LinearLayout
+                    android:id="@+id/ll_theamImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:id="@+id/iv_myprofiler"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content">
+
+                        <com.alexzh.circleimageview.CircleImageView
+                            android:id="@+id/cpersonview"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_marginLeft="@dimen/dp5"
+                            android:layout_marginTop="70dp"
+                            android:src="@drawable/contact_icon_profile"
+                            app:view_borderColor="#cccccc"
+                            app:view_borderWidth="@dimen/dp2"
+                            app:view_shadowDx="@dimen/dp2"
+                            app:view_shadowDy="0dp"
+                            app:view_shadowRadius="@dimen/dp2" />
+
+                        <ImageView
+                            android:id="@+id/personCamera"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginTop="140dp"
+                            android:src="@android:drawable/ic_menu_camera" />
+                    </RelativeLayout>
+                </LinearLayout>
+
+
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimaryDark"
+                android:orientation="horizontal"
+                android:paddingTop="@dimen/activity_margin"
+                android:paddingBottom="@dimen/activity_margin"
+                android:weightSum="3">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1320"
+                        android:textColor="@android:color/white"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="posts"
+                        android:textColor="@android:color/white"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="4.3m"
+                        android:textColor="@android:color/white"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="followers"
+                        android:textColor="@android:color/white"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="123"
+                        android:textColor="@android:color/white"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="following"
+                        android:textColor="@android:color/white"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
+
                 <TextView
                     android:layout_width="0dp"
-                    android:layout_weight="0.5"
                     android:layout_height="wrap_content"
-                    android:text="Name"
-                    android:textSize="14sp"
                     android:layout_marginLeft="15dp"
-                    android:padding="20dp"/>
+                    android:layout_weight="0.5"
+                    android:padding="20dp"
+                    android:text="Name"
+                    android:textAppearance="@style/AppTheme.Text"
+                    android:textSize="14sp" />
+
                 <EditText
                     android:id="@+id/personName"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:textSize="14sp"
+                    android:background="#00000000"
                     android:hint="Sam Enric"
                     android:inputType="textEmailAddress"
                     android:padding="16dp"
-                    android:layout_gravity="center"
-                    android:background="#00000000"/>
+                    android:textAppearance="@style/AppTheme.Text"
+                    android:textSize="14sp" />
             </LinearLayout>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.1dp"
-                android:background="#ACACAC"/>
+                android:background="#ACACAC" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
+
                 <TextView
                     android:layout_width="0dp"
-                    android:layout_weight="0.5"
                     android:layout_height="wrap_content"
-                    android:text="Email"
-                    android:textSize="14dp"
                     android:layout_marginLeft="15dp"
-                    android:padding="20dp"/>
+                    android:layout_weight="0.5"
+                    android:padding="20dp"
+                    android:text="Email"
+                    android:textAppearance="@style/AppTheme.Text"
+                    android:textSize="14dp" />
+
                 <EditText
                     android:id="@+id/personEmail"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:textSize="14sp"
+                    android:background="#00000000"
                     android:hint="Sam_enric@Seotoolzz.com"
                     android:inputType="textEmailAddress"
                     android:padding="16dp"
-                    android:layout_gravity="center"
-                    android:background="#00000000"/>
+                    android:textAppearance="@style/AppTheme.Text"
+                    android:textSize="14sp" />
             </LinearLayout>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.1dp"
-                android:background="#ACACAC"/>
+                android:background="#ACACAC" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
+
                 <TextView
                     android:layout_width="0dp"
-                    android:layout_weight="0.5"
                     android:layout_height="wrap_content"
-                    android:text="@string/mobile"
-                    android:textSize="14dp"
                     android:layout_marginLeft="15dp"
-                    android:padding="20dp"/>
+                    android:layout_weight="0.5"
+                    android:padding="20dp"
+                    android:text="@string/mobile"
+                    android:textAppearance="@style/AppTheme.Text"
+                    android:textSize="14dp" />
+
                 <EditText
                     android:id="@+id/personPhone"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:textSize="14sp"
+                    android:background="#00000000"
                     android:hint="0000000000"
                     android:inputType="number"
                     android:padding="16dp"
-                    android:layout_gravity="center"
-                    android:background="#00000000"/>
+                    android:textAppearance="@style/AppTheme.Text"
+                    android:textSize="14sp" />
             </LinearLayout>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.1dp"
-                android:background="#ACACAC"/>
+                android:background="#ACACAC" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
+
                 <TextView
                     android:layout_width="0dp"
-                    android:layout_weight="0.5"
                     android:layout_height="wrap_content"
-                    android:text="@string/designation"
-                    android:textSize="14dp"
                     android:layout_marginLeft="15dp"
-                    android:padding="20dp"/>
+                    android:layout_weight="0.5"
+                    android:padding="20dp"
+                    android:text="@string/designation"
+                    android:textAppearance="@style/AppTheme.Text"
+                    android:textSize="14dp" />
+
                 <EditText
                     android:id="@+id/personDesignation"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:textSize="14sp"
+                    android:background="#00000000"
                     android:hint="@string/designation"
                     android:inputType="text"
                     android:padding="16dp"
-                    android:layout_gravity="center"
-                    android:background="#00000000"/>
+                    android:textAppearance="@style/AppTheme.Text"
+                    android:textSize="14sp" />
             </LinearLayout>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.1dp"
-                android:background="#ACACAC"/>
+                android:background="#ACACAC" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
+
                 <TextView
+                    android:id="@+id/myTextView"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
-                    android:text="@string/department"
-                    android:textSize="14dp"
-                    android:padding="20dp"
                     android:layout_marginLeft="15dp"
-                    android:id="@+id/myTextView" />
+                    android:layout_weight="0.5"
+                    android:padding="20dp"
+                    android:text="@string/department"
+                    android:textAppearance="@style/AppTheme.Text"
+                    android:textSize="14dp" />
+
                 <EditText
                     android:id="@+id/personDepartment"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:inputType="text"
-                    android:textSize="14sp"
-                    android:hint="@string/department"
+                    android:layout_weight="1"
                     android:background="#00000000"
-                    android:padding="20dp"/>
+                    android:hint="@string/department"
+                    android:inputType="text"
+                    android:padding="20dp"
+                    android:textAppearance="@style/AppTheme.Text"
+                    android:textSize="14sp" />
             </LinearLayout>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.1dp"
-                android:background="#ACACAC"/>
+                android:background="#ACACAC" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
+
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
                     android:layout_weight="0.5"
-                    android:text="@string/deactivate_account"
-                    android:textSize="14dp"
                     android:padding="20dp"
-                    android:layout_marginLeft="15dp"/>
+                    android:text="@string/deactivate_account"
+                    android:textAppearance="@style/AppTheme.Text"
+                    android:textSize="14dp" />
+
                 <com.rey.material.widget.Switch
+                    android:id="@+id/switcher"
                     style="@style/MaterialSwitch"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:checked="true"
                     android:layout_below="@+id/logo"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="13dp"
                     android:layout_marginRight="15dp"
                     android:layout_marginBottom="13dp"
+                    android:checked="true"
                     android:elevation="0dp"
-                    android:switchPadding="16dp"
-                    android:id="@+id/switcher"
-                    />
+                    android:gravity="center"
+                    android:switchPadding="16dp" />
             </LinearLayout>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.1dp"
-                android:background="#ACACAC"/>
+                android:background="#ACACAC" />
 
         </LinearLayout>
     </ScrollView>

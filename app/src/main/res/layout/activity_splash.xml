@@ -5,7 +5,7 @@
     android:id="@+id/root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/appColorTheme"
+    android:background="@drawable/background_theam"
     tools:context=".activity.SplashActivity">
 
     <LinearLayout
@@ -15,7 +15,6 @@
             android:layout_marginRight="20dp"
             android:layout_marginLeft="20dp"
             android:layout_marginBottom="50dp"
-            android:background="@color/white"
             android:gravity="center"
             android:orientation="vertical" >
 
@@ -25,14 +24,15 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:layout_gravity="center"
-            android:layout_margin="10dp"
-            android:src="@drawable/app_logo" />
+            android:layout_margin="@dimen/dp10"
+            android:src="@drawable/detail_logo" />
         <TextView
             android:id="@+id/tv_mytext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="30dp"
-            android:textColor="@color/blueDark"
+            android:textColor="@color/white"
+            android:textAppearance="@style/AppTheme.Text"
             android:text="@string/app_subject"
             android:textSize="16sp" />
      </LinearLayout>

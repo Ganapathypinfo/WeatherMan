@@ -11,9 +11,21 @@ public class ProfileImages {
     @PrimaryKey(autoGenerate = true)
     private int id;
 
+//    @NonNull
+    @ColumnInfo(name = "userid")
+    private String userid;
+
     @NonNull
     @ColumnInfo(name = "userName")
     private String userName;
+
+//    @NonNull
+    @ColumnInfo(name = "loginUserName")
+    private String loginUserName;
+
+    @NonNull
+    @ColumnInfo(name = "UserType")
+    private String userType;
 
     @NonNull
     @ColumnInfo(name = "personalImage")
@@ -170,5 +182,32 @@ public class ProfileImages {
 
     public void setUserName(@NonNull String userName) {
         this.userName = userName;
+    }
+
+    @NonNull
+    public String getUserType() {
+        return userType;
+    }
+
+    public void setUserType(@NonNull String userType) {
+        this.userType = userType;
+    }
+
+    @NonNull
+    public String getUserid() {
+        return userid;
+    }
+
+    public void setUserid(@NonNull String userid) {
+        this.userid = userid;
+    }
+
+    @NonNull
+    public String getLoginUserName() {
+        return loginUserName;
+    }
+
+    public void setLoginUserName(@NonNull String loginUserName) {
+        this.loginUserName = loginUserName;
     }
 }

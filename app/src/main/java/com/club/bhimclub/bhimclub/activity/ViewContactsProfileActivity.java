@@ -3,10 +3,13 @@ package com.club.bhimclub.bhimclub.activity;
 import android.app.Dialog;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
 import android.view.Display;
 import android.view.MenuItem;
@@ -24,18 +27,26 @@ public class ViewContactsProfileActivity extends BaseActivity  {
     private static final String TAG = ViewContactsProfileActivity.class.getSimpleName();
     private AppBarLayout appBarLayout;
     CoordinatorLayout coordinatorLayout;
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Bundle bundle = getIntent().getExtras();
         assert bundle != null;
+
+
+        Window window = this.getWindow();
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.setStatusBarColor(ContextCompat.getColor(this, R.color.colorPrimaryDark));
+
         setContentView(R.layout.activity_view_contacts_profile);
         Toolbar toolbar= findViewById(R.id.toolbar);
         appBarLayout = findViewById(R.id.app_bar);
-
+        setSupportActionBar(toolbar);
         // toolbar fancy stuff
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//        getSupportActionBar().setTitle("Profile View");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Profile View");
 
         final Display dWidth = getWindowManager().getDefaultDisplay();
         coordinatorLayout = (CoordinatorLayout) findViewById(R.id.cordinator_layout);
@@ -55,7 +66,7 @@ public class ViewContactsProfileActivity extends BaseActivity  {
         /*Palette.from(bitmap).generate(new Palette.PaletteAsyncListener() {
             @Override
             public void onGenerated(Palette palette) {
-                int mutedColor = palette.getMutedColor(getResources().getColor(R.color.colorPrimary));
+                int mutedColor = palette.getMutedColor(getResources().getColor(R.color.colorPrimaryDark));
                 collapsingToolbarLayout.setContentScrimColor(mutedColor);
             }
         });*/
@@ -83,6 +94,7 @@ public class ViewContactsProfileActivity extends BaseActivity  {
         return super.onOptionsItemSelected(item);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void mImageFullView(View view) {
         final Dialog nagDialog = new Dialog(this, android.R.style.Theme_Black_NoTitleBar_Fullscreen);
             //        nagDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
