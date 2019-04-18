@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="gpsinfo"
+            type="com.ics.example.mycheckweather.viewmodel.GPSInfo"/>
+    </data>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorPrimaryDark"
+    android:gravity="center"
+    tools:context="com.ics.example.mycheckweather.activities.MainActivity">
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="150dp"
+        android:layout_margin="5dp"
+        android:src="@drawable/partly_cloudy"/>
+    <TextView
+        android:id="@+id/city_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:text="@{gpsinfo.city}"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="20sp" />
+    <TextView
+        android:id="@+id/latitude_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@{gpsinfo.lat}"
+        android:textSize="12sp"
+        android:layout_gravity="center"
+        android:textColor="@color/white"/>
+
+    <TextView
+        android:id="@+id/longitude_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@{gpsinfo.lon}"
+        android:textSize="12sp"
+        android:layout_gravity="center"
+        android:textColor="@color/white"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="10dp">
+
+        <LinearLayout
+            android:id="@+id/ll_today"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:onClick="SubmitInfo"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="Today"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/te_today_weather"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="@{gpsinfo.degreeToday}"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/btn_other"
+                android:textColor="@color/linkColor"
+                android:textStyle="italic"
+                android:onClick="SubmitInfo"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="@{gpsinfo.mFirstDay}"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/te_fst_day_wetr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="@{gpsinfo.degreeFirstDay}"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="@{gpsinfo.mSecDay}"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+            <TextView
+                android:id="@+id/te_sec_day_wetr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="@{gpsinfo.degreeSecDay}"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="@{gpsinfo.mThirdDay}"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/te_third_day_wetr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="@{gpsinfo.degreeThirdDay}"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>
+</layout>

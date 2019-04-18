@@ -1,20 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">@color/blueDark</color>
-    <color name="colorButton">#2E65D1</color>
-    <color name="colorPrimaryDark">@color/blueDark</color>
-    <color name="blueDark">	#013366</color>
-    <color name="lightBlue">#434d94</color>
-    <color name="gray">#b3adb7</color>
-    <color name="black">#000000</color>
-    <color name="skyBlue">#16ccf1</color>
-    <color name="green_light">#34fa4e</color>
-    <color name="colorAccent">@color/white</color>
-   <!-- <color name="appColorTheme">#9e2f42c7</color>-->
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="linkColor">#40e2ff</color>
     <color name="white">#ffffffff</color>
-    <color name="faded_white">#faf4f4</color>
-    <color name="contact_name">#333333</color>
-    <color name="contact_number">#8c8c8c</color>
-    <color name="light_gray">#fcfcfc</color>
-    <color name="profile_default_tint">#e0e0e0</color>
 </resources>

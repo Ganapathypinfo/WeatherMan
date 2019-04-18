@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="WeatherDetails"
+            type="com.ics.example.mycheckweather.viewmodel.WeatherDetailsOfHPW">
+
+        </variable>
+    </data>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+    android:orientation="vertical"
+    tools:context="com.ics.example.mycheckweather.activities.HPWDetails">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="170dp"
+        android:layout_margin="5dp"
+        android:src="@drawable/partly_cloudy" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:layout_marginLeft="15dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:textColor="@color/white"
+                android:textStyle="bold|italic"
+                android:text="@string/lable_humidity"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:textColor="@color/white"
+                android:textStyle="bold|italic"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:text="@string/lable_wind"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:textStyle="bold|italic"
+                android:textColor="@color/white"
+                android:text="@string/lable_pressure"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:layout_marginRight="15dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:textColor="@color/white"
+                android:textStyle="bold|italic"
+                android:text="@{WeatherDetails.todayHumidity}"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:textColor="@color/white"
+                android:textStyle="bold|italic"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:text="@{WeatherDetails.todayWind}"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:textStyle="bold|italic"
+                android:textColor="@color/white"
+                android:text="@{WeatherDetails.todayPressure}"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
+</layout>
